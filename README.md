@@ -2,7 +2,7 @@
 QUANTUM PASSWORD HACKING: USING GROVER'S ALGORITHM TO SOLVE PASSWORDS
 
 
-By Eli Kim, Junior Adoukonou, Miyu Umemoto, Keith Wallington
+By Eli Kim, Junior Adoukonou, Miyu Umemoto
 
 This project demonstrates the use of Grover's quantum search algorithm to locate a hidden password out of a finite number of possible candidates and achieve a quadratic speedup over classically brute-forced search. We implement the algorithm in Google Cirq, simulate the impact of altering the number of iterations on success probability, test scalability to larger password spaces such as 4-bit passwords, and test robustness by adding noise.
 
