@@ -1,0 +1,39 @@
+QUANTUM PASSWORD HACKING: USING GROVER'S ALGORITHM TO SOLVE PASSWORBy Eli Kim, Junior Adoukonou, Miyu Umemoto, Keith Wallington 
+Introduction 
+This project demonstrates the use of Grover's quantum search algorithm to locate a hidden password out of a finite number of possible candidates and achieve a quadratic speedup over classically brute-forced search. We implement the algorithm in Google Cirq, simulate the impact of altering the number of iterations on success probability, test scalability to larger password spaces such as 4-bit passwords, and test robustness by adding noise. 
+As digital systems increasingly rely on passwords and cryptographic keys for security, the ability of quantum computers to break these protections has gained significant attention. Traditional brute-force methods check each password one after another, leading to exponential growth in time as passwords get longer. Grover's quantum search algorithm reduces the search complexity from O(N) to O(sqrtN). This poses a serious threat to traditional password security. 
+This project explains how Grover's algorithm is used for password cracking, why it matters for cybersecurity, and the practical challenges in applying it to larger and noisier systems. 
+Related Work 
+Discovered by Lov Grover in 1996, Grover's algorithm is one of the most important quantum algorithms due to its potential to speed up unstructured search tasks. Unlike Shor's algorithm, which threatens cryptographic systems based on the factoring of large numbers, Grover's algorithm endangers symmetric-key systems and password security by providing a quadratic speedup over traditional brute-force searches. 
+Grover's algorithm uses quantum parallelism and amplitude amplification to improve the chances of finding the correct answer after about sqrt(N) iterations, where N is the number of possible passwords. Previous research and simulations have shown Grover's theoretical effectiveness, but practical limitations for real-world applications still exist. Implementing Grover's algorithm requires an oracle to mark the correct
+password with a phase flip and a diffusion operator to redistribute amplitude. Although these components can be developed and tested in quantum simulators like Google Cirq or IBM Qiskit, running them on actual quantum hardware introduces noise and errors that significantly lower the chances of success. 
+Recent studies have explored error reduction techniques and noise-resistant circuit designs, but scaling beyond small search spaces remains computationally challenging due to current quantum technology. Additionally, the literature shows that while Grover's algorithm reduces search complexity, it also requires a large number of quantum gates and precise coherence times, which strains today's quantum processors. 
+Methods 
+We worked on Grover's algorithm on a quantum computer to search for obscured passwords. We started with a basic version using 2-qubits to search for a previously-specified password ("11") and then progressed to a version able to search for any 3-bit password such as 101, 000, or 111. Our circuit layout contained an oracle that indicated the proper password by phasing, and a diffuser that increased the odds in getting the right answer. We varied the number of iterations (repeats) in testing the algorithm in order to observe the effect on the success rate, and we repeated the circuit in order to provide data for various passwords. 
+Scripts used in this project include: 
+- grover_basic.py: Runs the 2-qubit Grover's algorithm for a known password 
+- grover_generalized.py: Searches for any hidden 3-bit password 
+- grover_4bit.py: Expands the search to 4-bit passwords 
+- simulate_noise.py: Simulates the effect of quantum noise on Grover's success rate 
+Results 
+The early findings are that Grover's algorithm is best for running the optimal number of times the 3-bit password algorithm for running 2 iterations. The algorithm for running for far too long, however, makes the success rate fall because of the variation in the odds naturally. We learned from all the above that iterations do count for Grover's performance, and when well done, the algorithm always reveals unique passwords but at the same speed.
+Our simulations confirmed that for 3-bit search spaces, Grover's algorithm identifies the correct password with a high probability after 2 iterations. Running the algorithm longer caused the success probability to oscillate and eventually drop. 
+Discussion 
+Grover's algorithm shows promising results in searching small password spaces efficiently. The success rate is highly dependent on the number of iterations, aligning with the theoretical sqrt(N) performance. The results suggest a key tradeoff between the number of iterations and accuracy, especially in limited-coherence environments. 
+The introduction of noise in simulate_noise.py significantly lowered the success probability, underscoring the current challenges of running Grover's algorithm on actual quantum hardware. The results align with literature that emphasizes the need for error mitigation techniques. 
+Future Work 
+Future directions include: 
+- Scaling our method for 4-bit passwords 
+- Predicting the effect of noise and errors in the circuit 
+- Pitting our quantum findings against a classical brute-force search for an estimate on the number of practical advantages in running the quantum technique 
+References 
+- Grover, L. (1996). "A fast quantum mechanical algorithm for database search." 
+- Google Cirq Documentation. https://quantumai.google/cirq 
+ 
+Python scripts used: 
+- grover_basic.py 
+- grover_generalized.py 
+- grover_4bit.py 
+- simulate_noise.py 
+
+link to pdf: https://docs.google.com/document/d/1XrSItHejLk6wjLX85ohU4U4leTUq2mCbSJQ3dThmvps/edit?usp=sharing
